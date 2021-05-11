@@ -45,6 +45,27 @@ html::-webkit-scrollbar-thumb{
     background: var(--yellow);
 }
 
+section{
+    min-height: 100vh;
+    padding: 1rem 10%;
+    padding-top: 8.5rem;
+}
+
+.btn{
+    font-size: 1.7rem;
+    padding: 0.7rem 4rem;
+    margin-top: 1rem;
+    background: none;
+    color: #333;
+    cursor: pointer;
+    border-radius: 5rem;
+    border: .2rem solid var(--yellow);
+}
+
+.btn:hover{
+    background: var(--yellow);
+}
+
 header{
     position: fixed;
     top:0;
@@ -91,7 +112,66 @@ header #menu-bar{
     display: none;
 }
 
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
 
+.home::before,
+.home::after{
+    content:'';
+    position: absolute;
+    top: 5rem;
+    right: -6rem;
+    background: var(--yellow);
+    border-radius: 3rem;
+    transform: rotate(-45deg);
+    height: 40rem;
+    width: 70rem;
+    z-index: -2;
+    animation: animte 1s linear 1;
+}
+
+@keyframes animte{
+    0%{
+        transform: rotate(45deg) translateY(-40rem);
+    }
+}
+
+.home::before{
+    top: -7rem;
+    background: #fff;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.home .image{
+    flex: 1 1 39rem;
+}
+
+.home .image img{
+    width: 100%;
+}
+
+.home .content{
+    flex: 1 1 39rem;
+}
+
+.home .content h3{
+    color: #333;
+    font-size: 6rem;
+}
+
+.home .content p{
+    color: #666;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
 
 
 
@@ -107,10 +187,19 @@ header #menu-bar{
 
 
 /* Responsive */
-@media (max-width:768px){
+
+@media (max-width:991px){
     html{
-        font-size : 55%;
+        font-size: 55%;
     }
+
+    .home::before,
+    .home::after{
+        display: none;
+    }
+}
+
+@media (max-width:768px){
 
     header #menu-bar{
         display: block;
@@ -152,4 +241,28 @@ header #menu-bar{
         border-color: #333;
     }
 
+    .home .content{
+        text-align: center;
+    }
+
+    .home .content h3{
+        font-size: 4.5rem;
+    }
+
+    .fa-times{
+        transform: rotate(180deg);
+    }
+
+    header .navbar.nav-toggle{
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+
+}
+
+@media (max-width:500px){
+    html{
+        font-size: 50%;
+    }
 }
